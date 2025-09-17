@@ -1,4 +1,5 @@
- System Architecture & Deployment Overview
+## System Architecture & Deployment Overview
+
 Architecture Components:
 •	Local Image Storage: Images stored on local disk for indexing.
 •	Vector DB Creation: Uses Azure GPT-4o-mini model to create image descriptions; embeds descriptions with text-embedding-3-small.
@@ -6,6 +7,7 @@ Architecture Components:
 •	FastAPI Backend: Loads FAISS index and exposes REST API for semantic image search.
 •	Streamlit UI: Frontend app calls FastAPI endpoints to query and display image results.
 •	Azure OpenAI Integration: Powers description generation and embedding creation.
+
 Deployment Process:
 •	Docker Containerization: Entire app run inside a Docker container ensuring consistency across environments.
 •	Azure Container Registry (ACR): Docker image is pushed and stored securely.
