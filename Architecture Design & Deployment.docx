@@ -1,0 +1,16 @@
+ System Architecture & Deployment Overview
+Architecture Components:
+•	Local Image Storage: Images stored on local disk for indexing.
+•	Vector DB Creation: Uses Azure GPT-4o-mini model to create image descriptions; embeds descriptions with text-embedding-3-small.
+•	FAISS Vector Database: Stores embeddings and metadata for efficient image retrieval.
+•	FastAPI Backend: Loads FAISS index and exposes REST API for semantic image search.
+•	Streamlit UI: Frontend app calls FastAPI endpoints to query and display image results.
+•	Azure OpenAI Integration: Powers description generation and embedding creation.
+Deployment Process:
+•	Docker Containerization: Entire app run inside a Docker container ensuring consistency across environments.
+•	Azure Container Registry (ACR): Docker image is pushed and stored securely.
+•	Azure Web App Service: Pulls container from ACR and hosts the combined FastAPI + Streamlit services.
+•	Single Port Access: Azure Web App exposes one external port, used by FastAPI.
+•	Streamlit Access: Streamlit runs headlessly inside container and is accessed internally via FastAPI /streamlit endpoint.
+•	Docker Configuration: Dockerfile exposes required ports dynamically and installs dependencies.
+ 
